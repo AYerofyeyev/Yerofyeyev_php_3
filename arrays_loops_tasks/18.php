@@ -11,8 +11,10 @@ $arr = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sun
 foreach ($arr as $key => $value) {
     switch ($key) {
         case 5:
-        case 6:
             echo "<strong>{$value}<strong>, ";
+            break;
+        case 6:
+            echo "<strong>{$value}<strong>";
             break;
         default:
             echo $value . ", ";
