@@ -10,10 +10,20 @@
  * Time: 14:14
  */
 
-$goalDir = $_POST['folder'];
-$arrFolders = explode(DIRECTORY_SEPARATOR, __DIR__);
-$rootDir = $arrFolders[1];
-function searchDirName($dirName){
-
+function searchDirList($goalDir){
+    $cwd = realpath(__DIR__);
+    $dirList = scandir(realpath($cwd));
+    foreach ($dirList as $item) {
+        if (is_dir($item) && $item == $goalDir) {
+            $goalDirList = scandir(realpath($item));
+        }
+    }
+    if($goalDirList){
+        print_r($goalDirList);
+    } else {
+        echo "Такой папки нет";
+    }
 }
-print_r($rootDir);
+$myDir = $_POST['folder'];
+searchDirList($myDir);
+?>
